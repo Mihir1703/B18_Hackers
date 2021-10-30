@@ -23,7 +23,7 @@ const Signin = (props) => {
         getUser();
     })
     let history = useHistory()
-    const [credentials, setCredentials] = useState({ email: "", password: "",name:"",username:"" })
+    const [credentials, setCredentials] = useState({ uid,password: "",name:"",phone })
     let handleSubmit = async (e) => {
         console.log("submitted")
         e.preventDefault();
