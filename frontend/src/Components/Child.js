@@ -1,8 +1,18 @@
 import React from 'react'
 import wheat from '../img/logo.png'
 import wheat2 from '../img/wheat.jpg'
+import { useHistory } from 'react-router';
+import Cookies from 'universal-cookie/es6'
+
 
 export const Child = ({ items,location }) => {
+    const history = useHistory()
+    const cookies = new Cookies()
+    let out = ()=>{
+        console.log("click")
+        cookies.remove('auth-token')
+        history.push('/')
+    }
     return (
         <>
             <div>
@@ -14,7 +24,7 @@ export const Child = ({ items,location }) => {
                     <ul>
                         <li><a href="/">Home</a></li>
                         <li><a href="/">Profile</a></li>
-                        <li><a href="/">Log Out</a></li>
+                        <li><button onClick={out}>Log Out</button></li>
 
                     </ul>
                 </div>

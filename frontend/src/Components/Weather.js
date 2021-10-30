@@ -1,9 +1,25 @@
-import React, { useEffect,useState,useEffect} from 'react'
-import Cookies from 'universal-cookie/es6';
-import { useHistory } from 'react-router';
+import React, { useEffect,useState} from 'react'
 import { Child } from './Child';
+import { useHistory } from 'react-router';
+import Cookies from 'universal-cookie/es6'
 
 const Weather = () => {
+    const cookies = new Cookies();
+    let history = useHistory();
+    async function getUser() {
+        console.log(cookies.get('auth-token'))
+        let response = await fetch('http://localhost:8000/api/auth/getuser', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                "auth-token": cookies.get('auth-token')
+            }
+        })
+        let res = await response.json()
+        if (res.success === false) {
+            history.push('/');
+        }
+    }
     const [items, setItems] = useState();
     const [city, setcity] = useState("")
     let isCloud = {
@@ -47,9 +63,9 @@ const Weather = () => {
         })
     }
     useEffect(async () => {
+        await getUser()
         await getLocation()
         console.log(toShow)
-        // getUser
         setItems(toShow)
     }, [])
     return (
