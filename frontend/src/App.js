@@ -1,13 +1,15 @@
 import './App.css';
-import imglink from './img/img-login.svg'
+import './style2.css'
+import './style.css'
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
 // import Signin from './Components/Welcome'
-// import Signup from './Components/SignUp'
+import Signin from './Components/SignUp'
 import Frontpage from './Components/Frontpage';
+import Front from './Components/Front';
 import Weather from './Components/Weather';
 
 function App() {
@@ -16,11 +18,10 @@ function App() {
       <Router>
         <Switch>
           <Route exact path='/real'>
-            <Frontpage />
+            <Weather />
           </Route>
           <Route exact path="/">
-            {/* <Signin imgLink={imglink} /> */}
-            <Weather/>
+            <Signin />
           </Route>
           {/* <Route exact path="/signup">
             <Signup imgLink={imglink}/>

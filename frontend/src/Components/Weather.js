@@ -1,47 +1,61 @@
-import {React,useState,useEffect} from 'react'
+import React, { useEffect,useState,useEffect} from 'react'
+import Cookies from 'universal-cookie/es6';
+import { useHistory } from 'react-router';
+import { Child } from './Child';
 
 const Weather = () => {
+    const [items, setItems] = useState();
     const [city, setcity] = useState("")
-    let [forecastData, setforecastData] = useState([])
-    let [toShow, settoShow] = useState([])
-    let getLocation = async ()=>{
+    let isCloud = {
+        "desc": false,
+        "date": "",
+        "type": ""
+    }
+    let toShow = []
+    let getLocation = async () => {
         let url = "https://ipinfo.io/json?token=f1ca8eebc1bf05"
-        fetch(url).then(respose=>{
-            return respose.json()
-        }).then(data=>{
-            setcity(data.city)
-        })
-    }
-    useEffect(() => {
-        getLocation()
-    })
-    let forecast = async ()=>{
-        let url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=5b8181b7ac6ee3715ca04a8a2f25b230&units=metric`
-        await fetch(url).then(respose=>{
-            return respose.json()
-        }).then(data=>{
-            forecastData = data.list
-            console.log(forecastData)
-            todayForecast()
-        })
-    }
-    let todayForecast = ()=>{
+        let data = await fetch(url)
+        let city = await data.json()
+        setcity(city.city)
+        console.log("forecst run")
         let today = (new Date()).getDate()
-        forecastData.forEach(element => {
-            console.log(element)
-            let dt = new Date(element.dt_txt)
-            if(today === dt){
-                toShow.push({
-                    "weather":element.weather[0].main
-                })
-            }
-        });
-        console.log(toShow)
+        toShow = []
+        url = `https://api.openweathermap.org/data/2.5/forecast?q=${city.city}&appid=5b8181b7ac6ee3715ca04a8a2f25b230&units=metric`
+        await fetch(url).then(respose => {
+            return respose.json()
+        }).then(data => {
+            let obj = Array.from(JSON.parse(JSON.stringify(data.list)))
+            obj.forEach(e => {
+                let dt = new Date(e.dt_txt)
+                if (today === dt.getDate()) {
+                    let push = {
+                        "weather": e.weather[0].main,
+                        "temperature": e.main.temp,
+                        "date": e.dt_txt
+                    }
+                    toShow.push(push)
+                }
+                else if (e.weather[0].main !== "Clear") {
+                    if (isCloud.desc === false) {
+                        isCloud.date = dt.getDate().toString()
+                        isCloud.desc = true;
+                        isCloud.type = e.weather[0].main
+                    }
+                }
+            })
+            console.log(toShow)
+        })
     }
+    useEffect(async () => {
+        await getLocation()
+        console.log(toShow)
+        // getUser
+        setItems(toShow)
+    }, [])
     return (
-        <div>
-            <button onClick={forecast()} >Hello</button>
-        </div>
+        <>
+            {items && <Child items={items} location={city}/>}
+        </>
     )
 }
 
