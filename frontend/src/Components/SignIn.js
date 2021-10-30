@@ -45,7 +45,7 @@ const SignUp = () => {
             cookies.set('auth-token', json.authtoken);
             history.push('/')
         }else{
-            swal("Try Again!", json.error, "success");
+            swal("Try Again!", json.error, "error");
         }
 
     }

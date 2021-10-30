@@ -15,6 +15,7 @@ DBconnect.connect(async (err) => {
 
 app.use(cors())
 app.use('/api/auth',require('./routes/auth'))
+app.use('/api/crop',require('./routes/crop'))
 
 app.listen(port, () => {
     console.log(`Backend running on http://localhost:${port}`)

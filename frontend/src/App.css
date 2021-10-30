@@ -46,3 +46,56 @@
   align-items: center;
   flex-direction: column;
 }
+
+
+#why {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+.container-why {
+  padding-top: 120px;
+  padding-bottom: 120px;
+  width: 80%;
+}
+.head-why {
+  font-size: 1.3rem;
+}
+.head-why h2::after {
+  content: "";
+  display: block;
+  height: 4px;
+  width: 70px;
+  background-color: #ff2c2c;
+  margin-top: 20px;
+}
+.head-why h2 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.Scheme-section {
+  text-align: left;
+  margin: 50px 20px;
+}
+ol li {
+  list-style: circle;
+  list-style-type: style circle;
+  padding-bottom: 10px;
+}
+.schemes{
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.heading-scheme{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.heading-scheme span{
+  font-size: 1.5rem;
+  font-weight: 700;
+}

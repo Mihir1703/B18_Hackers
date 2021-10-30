@@ -9,6 +9,7 @@ import {
 import Signin from './Components/Signin'
 import Weather from './Components/Weather';
 import SignUp from './Components/SignUp';
+import PriceTable from './Components/PriceTable';
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
           </Route>
           <Route exact path="/signup">
             <SignUp />
+          </Route>
+          <Route exact path="/crop-price">
+            <PriceTable/>
           </Route>
           <Route>
             <h1>404</h1>

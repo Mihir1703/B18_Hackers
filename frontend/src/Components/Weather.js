@@ -38,24 +38,25 @@ const Weather = () => {
         console.log("forecst run")
         toShow = []
         url = `https://api.openweathermap.org/data/2.5/forecast?q=${city.city}&appid=5b8181b7ac6ee3715ca04a8a2f25b230&units=metric`
-        let today = new Date()
+        let today = new Date().getDate()
         await fetch(url).then(respose => {
             return respose.json()
         }).then(data => {
-            let current = today
+            console.log(data)
             let obj = Array.from(JSON.parse(JSON.stringify(data.list)))
             obj.forEach(e => {
                 let dt = new Date(e.dt_txt)
-                if (today.getDate() === dt.getDate() && current.getDate()) {
-                    current = new Date(e.dt_txt)
+                if (today === dt.getDate()) {
+                    console.log(e)
                     let push = {
                         "weather": e.weather[0].main,
                         "temperature": e.main.temp,
-                        "date": e.dt_txt
+                        "date": e.dt_txt,
+                        "desc":e.weather[0].description
                     }
+                    today = (today+1)%32 + ((today+1) == 32 ? 1:0);
+                    console.log(today)
                     toShow.push(push)
-                }else{
-
                 }
             })
             console.log(toShow)

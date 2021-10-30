@@ -1,7 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Recursive&display=swap');
 *{
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: 'Recursive', sans-serif;
 }
 
 .banner{
@@ -87,7 +88,7 @@ button{
     overflow: hidden;
 }
 
-span{
+button span{
     background: #6fc836;
     height: 100%;
     width: 0;
@@ -103,14 +104,6 @@ button:hover span{
     width: 100%;
 }
 
-body{
-    margin: 0;
-    padding: 0;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: #fff;
-}
 
 .container-v{
     display: flex;
@@ -130,20 +123,7 @@ body{
     overflow: hidden;
     border:2px solid #fff;
     border-radius: 30px;
-    margin: 5px 40px;
-}
-
-.container-v .box2{
-    min-width: 200px;
-    max-width: 200px;
-    position: relative;
-    background: #fff;
-    padding: 10px 30px 30px;
-    text-align: center;
-    overflow: hidden;
-    border:2px solid #6fc836;
-    border-radius: 30px;
-    margin: 5px 40px;
+    margin: 5px 25px;
 }
 
 .container-v .box h1{
@@ -154,46 +134,83 @@ body{
 }
 
 .container-v .box h2{
-    font-size: 56px;
+    font-size: 2rem;
     color:#fff;
     z-index: 1;
     letter-spacing: .1em;
 }
 
 .container-v .box h2 p{
-    font-size: 20px;
+    font-size: 1rem;
     color:#fff;
 }
 
-.container-v .box .fa{
+.container-v .box .fas{
     padding: 10px;
     margin: 10px;
     font-size: 80px;
     color: #fff;
 }
+.head{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 30px 0px;
+    justify-content: center;
+}
 
-.container-v .box2 h1{
-    font-size: 20px;
+
+
+.content-table{
+    border-collapse:collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+    align-self: center;
+}
+
+.content-table thead tr{
+    background-color: #6fc836;
+    color: #fff;
+    text-align: left;
     font-weight: bold;
-    color: #6fc836;
-    letter-spacing: .1em;
 }
 
-.container-v .box2 h2{
-    font-size: 56px;
-    color: #6fc836;
-    z-index: 1;
-    letter-spacing: .1em;
+.content-table th, .content-table td{
+    padding: 12px 15px;
 }
 
-.container-v .box2 h2 p{
-    font-size: 20px;
-    color:#6fc836;
+.content-table tbody tr{
+    border-bottom: 1px solid lightgray;
 }
 
-.container-v .box2 .fa{
-    padding: 10px;
-    margin: 10px;
-    font-size: 80px;
-    color: #6fc836;
+.content-table tbody tr:nth-of-type(even){
+    background-color:#f3f3f3;
 }
+
+.content-table tbody tr:last-of-type{
+    border-bottom: 2px solid #6fc836;
+}
+
+.price-table{
+    padding: 40px;
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: #d1d1d1;
+}
+.head-price span{
+    font-size: 2.2rem;
+}
+
+.map-view{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
