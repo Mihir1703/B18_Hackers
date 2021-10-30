@@ -5,9 +5,10 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import Signin from './Components/Welcome'
-import Signup from './Components/SignUp'
+// import Signin from './Components/Welcome'
+// import Signup from './Components/SignUp'
 import Frontpage from './Components/Frontpage';
+import Weather from './Components/Weather';
 
 function App() {
   return (
@@ -18,11 +19,12 @@ function App() {
             <Frontpage />
           </Route>
           <Route exact path="/">
-            <Signin imgLink={imglink} />
+            {/* <Signin imgLink={imglink} /> */}
+            <Weather/>
           </Route>
-          <Route exact path="/signup">
+          {/* <Route exact path="/signup">
             <Signup imgLink={imglink}/>
-          </Route>
+          </Route> */}
           <Route>
             <h1>404</h1>
           </Route>

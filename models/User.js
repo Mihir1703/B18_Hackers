@@ -10,8 +10,8 @@ const User = {
             }
         })
     },
-    findOne:async ({uid},callback)=>{
-        query = `select * from kissan where uid = ${uid}`
+    findOne:async ({phone},callback)=>{
+        query = `select * from kissan where phone_no = ${phone}`
         DBconnect.query(query,(err,data)=>{
             if(err) callback(err,null);
             else{
@@ -24,8 +24,8 @@ const User = {
         })
         
     },
-    findPassword:async ({uid},callback)=>{
-        DBconnect.query(`select * from kissan where uid = ${uid}`,(err,data)=>{
+    findPassword:async ({phone},callback)=>{
+        DBconnect.query(`select * from kissan where phone_no = ${phone}`,(err,data)=>{
             if(err) callback(err,null);
             else{
                 if(data.length == 0){

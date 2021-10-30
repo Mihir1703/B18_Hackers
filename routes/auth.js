@@ -22,13 +22,13 @@ router.post('/createuser', [
     }
     try {
         console.log(req.body.uid)
-        await User.findOne({ uid:req.body.uid }, async (err,data) => {
+        await User.findOne({ phone:req.body.phone }, async (err,data) => {
             if(err){
                 res.status(400).json({ success:false, error: "Sorry an error occured" })
                 return
             }
             if (data != null) {
-                res.status(400).json({ success:false, error: "Sorry a user with this Aadhar number already exists" })
+                res.status(400).json({ success:false, error: "Sorry a user with this Phone Number already exists" })
                 return
             } else {
                 const salt = await bcrypt.genSalt(config.salt);
@@ -44,7 +44,7 @@ router.post('/createuser', [
                     
                 const send = {
                     user: {
-                        uid: req.body.uid
+                        phone: req.body.phone
                     }
                 }
                 const authtoken = jwt.sign(send, JWT_SECRET);
@@ -59,17 +59,17 @@ router.post('/createuser', [
     }
 })
 router.post('/login', [
-    body('uid', 'Enter a valid email').isLength({min:16,max:16}),
+    body('phone', 'Enter a valid email').isLength({min:10,max:10}),
     body('password', 'Password cannot be blank').exists(),
 ], async (req, res) => {
-    const { uid, password } = req.body;
+    const { phone, password } = req.body;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
 
     try {
-        await User.findPassword({ uid:uid }, async (err, data) => {
+        await User.findPassword({ phone:phone }, async (err, data) => {
             if (data == null) {
                 res.status(200).json({ error: "Please try to login with correct credentials" });
                 return
@@ -83,7 +83,7 @@ router.post('/login', [
                 } else {
                     const data = {
                         user: {
-                            uid: uid
+                            phone: phone
                         }
                     }
                     const authtoken = jwt.sign(data, JWT_SECRET);
@@ -104,14 +104,14 @@ router.post('/login', [
 router.post('/getuser', fetchuser, async (req, res) => {
 
     try {
-        uid = req.uid;
-        await User.findOne({uid},(err,data)=>{
+        phone = req.phone;
+        await User.findOne({phone},(err,data)=>{
             if(err) {
                 res.status(statusCode.StatusCodes.INTERNAL_SERVER_ERROR).send({status:false,reason:"Internal server Error"})
                 return
             }
             if(data != null){
-                res.send({ success: true, user: data.name,uid:data.uid })
+                res.send({ success: true, user: data.name,phone:phone })
                 return
             }else{
                 res.send({success:false})
