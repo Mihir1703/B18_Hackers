@@ -6,26 +6,24 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-// import Signin from './Components/Welcome'
-import Signin from './Components/SignUp'
-import Frontpage from './Components/Frontpage';
-import Front from './Components/Front';
+import Signin from './Components/Signin'
 import Weather from './Components/Weather';
+import SignUp from './Components/SignUp';
 
 function App() {
   return (
     <>
       <Router>
         <Switch>
-          <Route exact path='/real'>
+          <Route exact path='/'>
             <Weather />
           </Route>
-          <Route exact path="/">
+          <Route exact path="/signin">
             <Signin />
           </Route>
-          {/* <Route exact path="/signup">
-            <Signup imgLink={imglink}/>
-          </Route> */}
+          <Route exact path="/signup">
+            <SignUp />
+          </Route>
           <Route>
             <h1>404</h1>
           </Route>

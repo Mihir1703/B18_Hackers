@@ -20,7 +20,7 @@ const Signin = (props) => {
         })
         let res = await response.json()
         if (res.success === true) {
-            history.push('/real');
+            history.push('/');
         }
     }
     useEffect(() => {
@@ -29,22 +29,24 @@ const Signin = (props) => {
     let history = useHistory()
     const [phone, setphone] = useState("")
     const [password, setpassword] = useState("")
+    const [name, setname] = useState("")
+    const [uid, setuid] = useState("")
     let handleSubmit = async (e) => {
         console.log("submitted")
         e.preventDefault();
-        let response = await fetch('http://localhost:8000/api/auth/login', {
+        let response = await fetch('http://localhost:8000/api/auth/createuser', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ phone:phone,password:password })
+            body: JSON.stringify({ phone: phone, password: password,uid:uid,name:name })
         })
         let json = await response.json();
         console.log(json)
         if (json.success) {
             cookies.set('auth-token', json.authtoken);
-            history.push('/real')
-        }else{
+            history.push('/')
+        } else {
             swal("Try Again!", json.error, "success");
         }
 
@@ -65,29 +67,46 @@ const Signin = (props) => {
                                 <i class="fa fa-user"></i>
                             </div>
                             <div>
-                                <h5>Phone Number</h5>
-                                <input class="input" type="text" value={phone} onChange={
-                                    e=>{
-                                        setphone(e.target.value)
-                                    }
-                                }/>
+                                <h5>Name</h5>
+                                <input class="input" type="text" value={name} onChange={(e)=>{
+                                    setname(e.target.value)
+                                }}/>
                             </div>
                         </div>
                         <div class="input-div two focus">
+                            <div class="i">
+                                <i class="fa fa-id-card-o"></i>
+                            </div>
+                            <div>
+                                <h5>Aadhar Number</h5>
+                                <input class="input" type="text" value={uid} onChange={(e)=>{
+                                    setuid(e.target.value)
+                                }}/>
+                            </div>
+                        </div>
+                        <div class="input-div three focus">
+                            <div class="i">
+                                <i class="fa fa-phone"></i>
+                            </div>
+                            <div>
+                                <h5>Phone Number</h5>
+                                <input class="input" type="text" value={phone} onChange={(e)=>{
+                                    setphone(e.target.value)
+                                }}/>
+                            </div>
+                        </div>
+                        <div class="input-div five focus">
                             <div class="i">
                                 <i class="fa fa-lock"></i>
                             </div>
                             <div>
                                 <h5>Password</h5>
-                                <input class="input" type="password" value={password} onChange={
-                                    e=>{
-                                        setpassword(e.target.value)
-                                    }
-                                }/>
+                                <input class="input" type="password" value={password} onChange={(e)=>{
+                                    setpassword(e.target.value)
+                                }}/>
                             </div>
                         </div>
-                        <input type="submit" class="btn" value="Login" />
-                        <div class="end"> Don't have an account?  <a href="signup.html">Register here</a> </div>
+                        <input type="submit" class="btn" value="Register" />
                     </form>
                 </div>
             </div>

@@ -4,6 +4,9 @@ import { useHistory } from 'react-router';
 import Cookies from 'universal-cookie/es6'
 
 const Weather = () => {
+    const [items, setItems] = useState();
+    const [city, setcity] = useState("")
+    const [user, setuser] = useState("")
     const cookies = new Cookies();
     let history = useHistory();
     async function getUser() {
@@ -16,12 +19,11 @@ const Weather = () => {
             }
         })
         let res = await response.json()
+        setuser(res.user)
         if (res.success === false) {
-            history.push('/');
+            history.push('/signin');
         }
     }
-    const [items, setItems] = useState();
-    const [city, setcity] = useState("")
     let isCloud = {
         "desc": false,
         "date": "",
@@ -34,29 +36,26 @@ const Weather = () => {
         let city = await data.json()
         setcity(city.city)
         console.log("forecst run")
-        let today = (new Date()).getDate()
         toShow = []
         url = `https://api.openweathermap.org/data/2.5/forecast?q=${city.city}&appid=5b8181b7ac6ee3715ca04a8a2f25b230&units=metric`
+        let today = new Date()
         await fetch(url).then(respose => {
             return respose.json()
         }).then(data => {
+            let current = today
             let obj = Array.from(JSON.parse(JSON.stringify(data.list)))
             obj.forEach(e => {
                 let dt = new Date(e.dt_txt)
-                if (today === dt.getDate()) {
+                if (today.getDate() === dt.getDate() && current.getDate()) {
+                    current = new Date(e.dt_txt)
                     let push = {
                         "weather": e.weather[0].main,
                         "temperature": e.main.temp,
                         "date": e.dt_txt
                     }
                     toShow.push(push)
-                }
-                else if (e.weather[0].main !== "Clear") {
-                    if (isCloud.desc === false) {
-                        isCloud.date = dt.getDate().toString()
-                        isCloud.desc = true;
-                        isCloud.type = e.weather[0].main
-                    }
+                }else{
+
                 }
             })
             console.log(toShow)
@@ -70,7 +69,7 @@ const Weather = () => {
     }, [])
     return (
         <>
-            {items && <Child items={items} location={city}/>}
+            {items && <Child items={items} location={city} user={user}/>}
         </>
     )
 }

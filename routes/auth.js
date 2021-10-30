@@ -12,7 +12,7 @@ const JWT_SECRET = config.JWT_SECRET;
 
 router.post('/createuser', [
     body('name', 'Enter a valid name').isLength({ min: 3 }),
-    body('uid', 'Enter a valid uid').isLength({ min: 16,max:16 }),
+    body('uid', 'Enter a valid uid').isLength({ min: 12,max:12 }),
     body('phone', 'Enter a valid phone number').isMobilePhone(),
     body('password', 'Password must be atleast 5 characters').isLength({ min: 5 }),
 ], async (req, res) => {
