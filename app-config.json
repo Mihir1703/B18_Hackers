@@ -3,7 +3,7 @@
     "dbconfig": {
         "host": "localhost",
         "user": "root",
-        "password": "Mihir1703#",
+        "password": "mysql",
         "database": "farmer_helpdesk"
     },
     "salt":10,

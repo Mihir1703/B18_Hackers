@@ -6,7 +6,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import Signin from './Components/Signin'
+import Signin from './Components/SignIn'
 import Weather from './Components/Weather';
 import SignUp from './Components/SignUp';
 import PriceTable from './Components/PriceTable';
