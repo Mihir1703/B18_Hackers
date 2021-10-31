@@ -1,9 +1,9 @@
 {
     "port": 8000,
     "dbconfig": {
-        "host": "localhost",
-        "user": "root",
-        "password": "Mihir1703#",
+        "host": "mihir.mysql.database.azure.com",
+        "user": "mihir@mihir",
+        "password": "azure@mysql17",
         "database": "farmer_helpdesk"
     },
     "salt":10,

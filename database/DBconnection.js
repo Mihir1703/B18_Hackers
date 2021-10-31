@@ -5,7 +5,8 @@ const DBconnect = mysql.createConnection({
     host: config.dbconfig.host,
     user: config.dbconfig.user,
     password: config.dbconfig.password,
-    database:config.dbconfig.database
+    database:config.dbconfig.database,
+    port:3306
 });
 
 module.exports = DBconnect;
