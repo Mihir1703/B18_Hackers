@@ -6,10 +6,10 @@ A portal to solve problems faced by farmers.
 ## Screenshots
 
 ### Login Page
-![Login Page](https://github.com/Mihir1703/B18_Hackers/blob/master/login.jpeg)
+![Login Page](https://github.com/H-Maurya/hello-world/blob/main/login_page.jpg)
   
 ### Home Page
-![Home Page](https://github.com/H-Maurya/hello-world/blob/main/home_page.jpg)
+![Home Page](https://github.com/Mihir1703/B18_Hackers/blob/master/login.jpeg)
 
 # How it Works?
 1. Create a new Account.
