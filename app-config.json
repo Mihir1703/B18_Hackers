@@ -1,0 +1,11 @@
+{
+    "port": 8000,
+    "dbconfig": {
+        "host": "localhost",
+        "user": "root",
+        "password": "Mihir1703#",
+        "database": "farmer_helpdesk"
+    },
+    "salt":10,
+    "JWT_SECRET":"b1704fpo-88uef-457f-jje7-9s9d9d5dhjvjer"
+}
