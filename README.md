@@ -6,7 +6,7 @@ A portal to solve problems faced by farmers.
 ## Screenshots
 
 ### Login Page
-![Login Page](https://github.com/H-Maurya/hello-world/blob/main/login_page.jpg)
+![Login Page](https://github.com/Mihir1703/B18_Hackers/blob/master/login.jpeg)
   
 ### Home Page
 ![Home Page](https://github.com/H-Maurya/hello-world/blob/main/home_page.jpg)
