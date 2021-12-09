@@ -21,5 +21,5 @@ A portal to solve problems faced by farmers.
 # Features
 1. Current weather conditions as well as forecasts.
 2. Warnings for bad weather.
-3. Price table containing prices set by GOI for crops.
-4. Information about schemes launched by GOI for farmer's welfare.
+3. Price table containing prices set by Govt. for crops.
+4. Information about schemes launched by Govt. for farmer's welfare.
