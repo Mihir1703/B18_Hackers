@@ -1,4 +1,4 @@
-# B18_Hackers
+# B18_Hackers (Hackathon Project)
 # Farmer's Portal
 
 A portal to solve problems faced by farmers.
